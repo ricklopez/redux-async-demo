@@ -1,4 +1,4 @@
-import { HELLO_PROMISE } from '../constants/action-types';
+import { HELLO_PROMISE } from '../constants/action.types';
 import objectAssign from 'object-assign';
 
 export default function(state = {promiseData: null, sagaData: null}, action) {

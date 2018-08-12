@@ -12,7 +12,12 @@ import 'bootstrap/dist/js/bootstrap.js';
 import 'bootstrap/dist/css/bootstrap.css';
 import './index.css';
 import App from './App';
+import reducers from './reducers';
 import registerServiceWorker from './registerServiceWorker';
-
-ReactDOM.render(<App />, document.getElementById('root'));
+const sagaMiddleware = createSagaMiddleware();
+ReactDOM.render(
+  <Provider store={createStore(reducers, applyMiddleware(ReduxPromise, sagaMiddleware))}>
+    <App />
+  </Provider>, 
+  document.getElementById('root'));
 registerServiceWorker();
