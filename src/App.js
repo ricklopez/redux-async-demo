@@ -1,8 +1,16 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { getPosts } from './actions/hello.actions';
 import logo from './logo.svg';
 import './App.css';
 
 class App extends Component {
+  
+  componentDidMount() {
+    this.props.getPosts();  
+  }
+  
   render() {
     return (
       <div className="App">
@@ -18,4 +26,14 @@ class App extends Component {
   }
 }
 
-export default App;
+function mapStateToProps(state) {
+  return { posts: state.posts };
+}
+
+function mapDispatchToProps(dispatch){
+  return bindActionCreators({ 
+    getPosts 
+  }, dispatch);
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
