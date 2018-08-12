@@ -13,6 +13,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 import './index.css';
 import App from './App';
 import reducers from './reducers';
+import rootSaga from './sagas/index';
 import registerServiceWorker from './registerServiceWorker';
 const sagaMiddleware = createSagaMiddleware();
 ReactDOM.render(
@@ -20,4 +21,7 @@ ReactDOM.render(
     <App />
   </Provider>, 
   document.getElementById('root'));
+
+// Start Up All your Sagas
+sagaMiddleware.run(rootSaga);
 registerServiceWorker();
